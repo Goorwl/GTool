@@ -83,7 +83,7 @@ public class SPUtils {
         sSharedPreferences.edit().putLong(key, value).commit();
     }
 
-    public static long getInt(String key, long defValue) {
+    public static long getLong(String key, long defValue) {
         if (sSharedPreferences == null) {
             return 0l;
         }
