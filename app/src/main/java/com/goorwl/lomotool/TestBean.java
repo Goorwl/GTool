@@ -1,8 +1,10 @@
 package com.goorwl.lomotool;
 
-public class TestBean {
+import java.io.Serializable;
+
+public class TestBean implements Serializable {
     private String name;
-    private int age;
+    private int    age;
 
     public TestBean(String name, int age) {
         this.name = name;

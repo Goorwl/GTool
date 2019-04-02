@@ -3,6 +3,14 @@ package com.goorwl.utils;
 import android.os.CountDownTimer;
 import android.util.Log;
 
+/**
+ * FileName: SingleTimer
+ * Author: Goorwl
+ * Create Date: 2019/4/2 14:55
+ * Github: https://github.com/Goorwl
+ * Blog: https://xiaozhuanlan.com/goorwl
+ */
+
 public class SingleTimer {
     private static final String         TAG      = "SingleTimer";
     private static       SingleTimer    instance = null;

@@ -3,6 +3,14 @@ package com.goorwl.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * FileName: SPUtils
+ * Author: Goorwl
+ * Create Date: 2019/4/2 14:55
+ * Github: https://github.com/Goorwl
+ * Blog: https://xiaozhuanlan.com/goorwl
+ */
+
 public class SPUtils {
     private static SharedPreferences sSharedPreferences;
 

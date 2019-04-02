@@ -17,6 +17,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * FileName: LiveEventBus
+ * Author: Goorwl
+ * Create Date: 2019/4/2 14:55
+ * Github: https://github.com/Goorwl
+ * Blog: https://xiaozhuanlan.com/goorwl
+ */
+
 public class LiveEventBus {
     private final Map<String, BusMutableLiveData<Object>> bus;
 

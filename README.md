@@ -1,6 +1,8 @@
 # GTool 
 
 [![](https://jitpack.io/v/Goorwl/GTool.svg)](https://jitpack.io/#Goorwl/GTool)
+[![HitCount](http://hits.dwyl.io/goorwl/GTool.svg)](http://hits.dwyl.io/goorwl/GTool)
+[![](https://img.shields.io/badge/blog-%E6%A9%99%E5%AD%90-blue.svg)](https://xiaozhuanlan.com/goorwl?rel=goorwl)
 
 ## Introduction	
    
@@ -13,14 +15,14 @@ Step 1: In project `build.gradle` file, add following content:
 	allprojects {
 		repositories {
 			...
-			maven { url 'https://jitpack.io' }		// add this line
+			maven { url 'https://jitpack.io' }			// add this line
 		}
 	}
 
 Step 2:In module `build.gradle` file, add following content:
 
 	dependencies {
-		implementation 'com.github.Goorwl:GTool:0.0.2'   // add this line,please keep lastest
+		implementation 'com.github.Goorwl:GTool:0.0.3'   // add this line, please keep lastest
 	}
 
 ## How To Use
@@ -45,6 +47,18 @@ Step 2:In module `build.gradle` file, add following content:
 
 	// todo
 
+### AppManager
+
+	// todo
+
+### CoreActivity
+
+	// todo
+
+### ImageUtils
+
+	// todo
+
 ### LiveEventBus
 
 Refer : [JeremyLiao](https://github.com/JeremyLiao/LiveEventBus)
@@ -60,6 +74,10 @@ In project `proguard-rules.pro` file ,add following content：
 	-keep class com.goorwl.utils.** { *; }
 	-keepclassmembers class com.goorwl.utils.** { *; }
 	-dontwarn com.goorwl.utils.**
+
+## About Author
+
+[橙子的Android小屋](https://xiaozhuanlan.com/goorwl?rel=goorwl)
 
 ## License
 

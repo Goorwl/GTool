@@ -2,6 +2,14 @@ package com.goorwl.utils;
 
 import android.util.Log;
 
+/**
+ * FileName: LogUtils
+ * Author: Goorwl
+ * Create Date: 2019/4/2 14:55
+ * Github: https://github.com/Goorwl
+ * Blog: https://xiaozhuanlan.com/goorwl
+ */
+
 public class LogUtils {
     /**
      * 定义6个静态常量，用来表示日志信息的打印等级 * 由1到5打印等级依次升高

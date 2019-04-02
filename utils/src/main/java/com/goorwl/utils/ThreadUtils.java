@@ -6,6 +6,14 @@ import android.os.Looper;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * FileName: ThreadUtils
+ * Author: Goorwl
+ * Create Date: 2019/4/2 14:55
+ * Github: https://github.com/Goorwl
+ * Blog: https://xiaozhuanlan.com/goorwl
+ */
+
 public class ThreadUtils {
 
     //获取主线程的handler对象

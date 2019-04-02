@@ -1,5 +1,13 @@
 package com.goorwl.utils;
 
+/**
+ * FileName: SingleInstance
+ * Author: Goorwl
+ * Create Date: 2019/4/2 14:55
+ * Github: https://github.com/Goorwl
+ * Blog: https://xiaozhuanlan.com/goorwl
+ */
+
 public abstract class SingleInstance<T> {
     private T mType;
 
