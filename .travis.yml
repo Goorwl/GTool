@@ -1,4 +1,6 @@
 language: android
+before_install:
+ - chmod +x gradlew
 android:        # 配置信息
   components:
     # 你可能需要修改下面两项的版本
