@@ -22,7 +22,7 @@ Step 1: In project `build.gradle` file, add following content:
 Step 2:In module `build.gradle` file, add following content:
 
 	dependencies {
-		implementation 'com.github.Goorwl:GTool:0.0.3'   // add this line, please keep lastest
+		implementation 'com.github.Goorwl:GTool:$latest_version'   // add this line, please keep lastest
 	}
 
 ## How To Use
@@ -69,7 +69,7 @@ Refer : [JeremyLiao](https://github.com/JeremyLiao/LiveEventBus)
 
 ## ProGuard
 
-In project `proguard-rules.pro` file ,add following content：
+In project `proguard-rules.pro` file , add following content：
 
 	-keep class com.goorwl.utils.** { *; }
 	-keepclassmembers class com.goorwl.utils.** { *; }

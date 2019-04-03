@@ -1,4 +1,4 @@
-package com.goorwl.lomotool;
+package com.goorwl.lomotool.config;
 
 public interface ConfigString {
     String CONFIG_HOME  = "CONFIG_HOME";

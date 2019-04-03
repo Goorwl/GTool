@@ -1,10 +1,13 @@
-package com.goorwl.lomotool;
+package com.goorwl.lomotool.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.Button;
 
+import com.goorwl.lomotool.R;
+import com.goorwl.lomotool.bean.TestBean;
+import com.goorwl.lomotool.config.ConfigString;
 import com.goorwl.utils.CoreActivity;
 import com.goorwl.utils.LogUtils;
 

@@ -1,4 +1,4 @@
-package com.goorwl.lomotool;
+package com.goorwl.lomotool.bean;
 
 import java.io.Serializable;
 
