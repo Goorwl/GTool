@@ -1,1 +1,13 @@
-language: java
+language: android
+android:        # 配置信息
+  components:
+    # 你可能需要修改下面两项的版本
+    - build-tools-28.0.0
+    - android-28
+      # Android Support Repository
+    - extra-android-m2repository
+      # Support Library
+    - extra-android-support
+script:
+  # 生成 APK
+  - ./gradlew assembleRelease
