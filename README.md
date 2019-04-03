@@ -22,6 +22,7 @@ Step 1: In project `build.gradle` file, add following content:
 Step 2:In module `build.gradle` file, add following content:
 
 	dependencies {
+		...
 		implementation 'com.github.Goorwl:GTool:$latest_version'   // add this line, please keep lastest
 	}
 
@@ -29,23 +30,101 @@ Step 2:In module `build.gradle` file, add following content:
 
 ### LogUtils
 
-	// todo
+This tool is used to output some infomation during debug.
+
+* Init
+	
+		LogUtils.setEnable(BuildConfig.DEBUG);		// when we release the apk this log will auto close. Called before the first execution.
+
+* Setting
+
+		LogUtils.setLevel(1); 	// 	filter log level by this number,only output levels greater than this number.
+
+* Usage
+
+		LogUtils.v(TAG, "onCreate: ");		// LEVEL:1
+        LogUtils.i(TAG, "onCreate: ");		// LEVEL:2
+        LogUtils.d(TAG, "onCreate: ");		// LEVEL:3
+        LogUtils.w(TAG, "onCreate: ");		// LEVEL:4
+        LogUtils.e(TAG, "onCreate: ");		// LEVEL:5
+	
 
 ### ThreadUtils
 
-	// todo
+This tool encapsulates thread operations by thread pool.
+
+* Init
+
+	NONE
+
+* Usage
+
+	* on sub thread
+	
+	        ThreadUtils.runOnSubThread(()->{
+	            // do something on sub thread
+	        });
+
+	* on main thread
+	
+	        ThreadUtils.runOnUiThread(()->{
+	            // do something on main thread
+	        });
 
 ### SPUtils
 
-	// todo
+This tool encapsulates shareperference operations.
 
+* Init
+
+		SPUtils.init(T extends Application);		// Called before the first execution.
+
+* Usage
+
+	* Int
+
+		    boolean resPutInt = SPUtils.putInt(CONFIG_HOME, 1);
+        	int resGetInt = SPUtils.getInt(CONFIG_HOME, 0);
+
+	* String
+	* Float
+	* Long
+	* Boolen
+	
 ### SingleTimer
 
-	// todo
+This tool is used to count down globally.
 
+* Init
+
+	NONE
+
+* Usage
+
+	* Start Timer
+	
+			SingleTimer.getInstance().startTime(5);		// Start a new timer regardless of whether it existed before. UNIT:SECONDS.
+			SingleTimer.getInstance().setTime(3);		// Start a new timer with there is currently no timer, or ignore this setting.  UNIT:SECONDS.
+
+	* Stop Timer
+
+			SingleTimer.getInstance().stopTime();		// Stop the global timer. 
+
+	* Get Timer
+	
+    	    int time = SingleTimer.getInstance().getTime();		// From the global timer get the rest of time.
+        
 ### SingleInstance
 
-	// todo
+This tool encapsulates single instance operations.
+
+* Init
+
+NONE
+
+* Usage
+
+		// todo
 
 ### AppManager
 

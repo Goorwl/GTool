@@ -1,5 +1,6 @@
 package com.goorwl.utils;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -17,7 +18,7 @@ public class SPUtils {
     private SPUtils() {
     }
 
-    public static void init(Context context) {
+    public static void init(Application context) {
         if (sSharedPreferences == null) {
             synchronized (SPUtils.class) {
                 if (sSharedPreferences == null) {
@@ -27,11 +28,11 @@ public class SPUtils {
         }
     }
 
-    public static void putBoolean(String key, boolean value) {
+    public static boolean putBoolean(String key, boolean value) {
         if (sSharedPreferences == null) {
-            return;
+            return false;
         }
-        sSharedPreferences.edit().putBoolean(key, value).commit();
+        return sSharedPreferences.edit().putBoolean(key, value).commit();
     }
 
     public static boolean getBoolean(String key, boolean defValue) {
@@ -41,11 +42,11 @@ public class SPUtils {
         return sSharedPreferences.getBoolean(key, defValue);
     }
 
-    public static void putString(String key, String value) {
+    public static boolean putString(String key, String value) {
         if (sSharedPreferences == null) {
-            return;
+            return false;
         }
-        sSharedPreferences.edit().putString(key, value).commit();
+        return sSharedPreferences.edit().putString(key, value).commit();
     }
 
     public static String getString(String key, String defValue) {
@@ -55,11 +56,11 @@ public class SPUtils {
         return sSharedPreferences.getString(key, defValue);
     }
 
-    public static void putInt(String key, int value) {
+    public static boolean putInt(String key, int value) {
         if (sSharedPreferences == null) {
-            return;
+            return false;
         }
-        sSharedPreferences.edit().putInt(key, value).commit();
+        return sSharedPreferences.edit().putInt(key, value).commit();
     }
 
     public static int getInt(String key, int defValue) {
@@ -69,11 +70,11 @@ public class SPUtils {
         return sSharedPreferences.getInt(key, defValue);
     }
 
-    public static void putFloat(String key, float value) {
+    public static boolean putFloat(String key, float value) {
         if (sSharedPreferences == null) {
-            return;
+            return false;
         }
-        sSharedPreferences.edit().putFloat(key, value).commit();
+        return sSharedPreferences.edit().putFloat(key, value).commit();
     }
 
     public static Float getFloat(String key, Float defValue) {
@@ -84,11 +85,11 @@ public class SPUtils {
     }
 
 
-    public static void putLong(String key, long value) {
+    public static boolean putLong(String key, long value) {
         if (sSharedPreferences == null) {
-            return;
+            return false;
         }
-        sSharedPreferences.edit().putLong(key, value).commit();
+        return sSharedPreferences.edit().putLong(key, value).commit();
     }
 
     public static long getLong(String key, long defValue) {

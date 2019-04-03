@@ -8,6 +8,10 @@ package com.goorwl.utils;
  * Blog: https://xiaozhuanlan.com/goorwl
  */
 
+/**
+ * @deprecated  bxx not confirm
+ * */
+@Deprecated
 public abstract class SingleInstance<T> {
     private T mType;
 
