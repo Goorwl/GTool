@@ -11,7 +11,6 @@ import com.goorwl.lomotool.config.ConfigString;
 import com.goorwl.utils.CoreActivity;
 import com.goorwl.utils.LogUtils;
 import com.goorwl.utils.SPUtils;
-import com.goorwl.utils.SingleInstance;
 import com.goorwl.utils.SingleTimer;
 import com.goorwl.utils.ThreadUtils;
 
@@ -27,23 +26,9 @@ public class MainActivity extends CoreActivity implements ConfigString {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mActivity = this;
-
-        mButton = findViewById(R.id.button);
-
-        TestBean testBean = new SingleInstance<TestBean>() {
-            @Override
-            protected TestBean create() {
-                return new TestBean("Tom", 23);
-            }
-        }.get();
-
-
-
         setTag(CONFIG_HOME);
 
-        int age = testBean.getAge();
-        LogUtils.e(TAG, "onCreate: " + age);
-
+        mButton = findViewById(R.id.button);
         mButton.setOnClickListener(v -> jumpActivity(Page2Activity.class));
 
         LogUtils.setEnable(BuildConfig.DEBUG);

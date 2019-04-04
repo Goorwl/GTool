@@ -113,18 +113,6 @@ This tool is used to count down globally.
 	* Get Timer
 	
     	    int time = SingleTimer.getInstance().getTime();		// From the global timer get the rest of time.
-        
-### SingleInstance
-
-This tool encapsulates single instance operations.
-
-* Init
-
-NONE
-
-* Usage
-
-		// todo
 
 ### AppManager
 
