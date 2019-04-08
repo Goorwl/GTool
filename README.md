@@ -87,6 +87,8 @@ This tool encapsulates shareperference operations.
         	int resGetInt = SPUtils.getInt(CONFIG_HOME, 0);
 
 	* String
+		
+			...
 	* Float
 	* Long
 	* Boolen
@@ -116,15 +118,93 @@ This tool is used to count down globally.
 
 ### AppManager
 
-	// todo
+* Init
+
+	NONE
+
+* Usage
+
+	* getTopActivity() : get the top activity of the stack activity.
+
+		    CoreActivity topActivity = AppManager.getAppManager().getTopActivity();
+
+	* getPreActivity() : get the pre activity of the activity which called this.
+
+            CoreActivity preActivity = AppManager.getAppManager().getPreActivity(T extends CoreActivity);
+
+	* backToHome() : back the main activity of this application.
+
+			AppManager.getAppManager().backToHome();
+
+	* backToTagFront() ：back the activity which last activity marked, don't include the marked activity.
+
+			AppManager.getAppManager().backToTagFront();
+
+	* backToTag() ：back the activity which activity marked, include the marked activity.
+
+			AppManager.getAppManager().backToTag();
+
+* NOTICE
+
+	MUST USE WITH COREACTIVITY.
 
 ### CoreActivity
 
-	// todo
+This tool is a base Activity which can be used instead of AppCompatActivity, and add some method to more effectiveness.
+
+* Init
+
+	NONE
+
+* Usage
+
+	* jumpActivity(Class) : start activity.
+
+			jumpActivity(MainActivity.class);
+
+	* jumpActivity(Class, Bundle) : start activity with bundle.
+
+			jumpActivity(MainActivity.class, bundle);
+
+	* jumpActivity(String) : start activity with activity class name.
+
+			jumpActivity("MainActivity");
+
+	* setTag(String) : set tag for current activity.
+
+			setTag("CONFIG_HOME");
+
+	* getTag() : get tag from current activity.
+
+			String tag = getTag();
 
 ### ImageUtils
 
-	// todo
+* Init 
+
+	NONE
+
+* Usage 
+
+	* stringToBitmap(String) : get bitmap from base64 string of the image.
+		
+		    Bitmap xxx = ImageUtils.stringToBitmap("xxx");
+
+	* bitmapToString(Bitmap) : get base64 string of the image from bitmap.
+		
+		    String res   = ImageUtils.bitmapToString(xxx);
+
+	* bitmapToDrawable(Context, Bitmap) : Convert Bitmap to Drawable.
+		
+		    Drawable drawable = ImageUtils.bitmapToDrawable(mActivity, xxx);
+
+	* drawableToBitmap(Drawable) : Convert Drawable to Bitmap.
+		
+		    Bitmap bitmap = ImageUtils.drawableToBitmap(drawable);
+
+	* saveBitmap(ImageView, String) : Save image to local storage from ImageView.
+		
+		    ImageUtils.saveBitmap(imageView, "/sdcard/xxx.png);
 
 ### LiveEventBus
 

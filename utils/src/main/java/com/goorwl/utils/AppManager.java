@@ -69,11 +69,8 @@ public class AppManager {
     /**
      * 返回到应用程序首页
      */
-    public void backToHome(boolean hasSplash) {
-        if (hasSplash) {
-            backTo(0);
-        } else
-            backTo(1);
+    public void backToHome() {
+        backTo(1);
     }
 
     /**

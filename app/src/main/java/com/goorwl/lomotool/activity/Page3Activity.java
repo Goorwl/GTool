@@ -33,7 +33,7 @@ public class Page3Activity extends CoreActivity implements ConfigString {
         Button btn7 = findViewById(R.id.button7);
 
         btn3.setOnClickListener(v -> {
-            AppManager.getAppManager().backToHome(false);
+            AppManager.getAppManager().backToHome();
         });
         btn4.setOnClickListener(v -> {
             AppManager.getAppManager().backToTag(CONFIG_HOME);
