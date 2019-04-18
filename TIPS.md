@@ -51,7 +51,7 @@
         }
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);        	//  最近任务白屏显示，界面不允许截屏、录屏
-		setContentView(R.layout.activity_qukuan);
+		setContentView(R.layout.activity_main);
 		// TODO：
 	}
 
@@ -203,3 +203,27 @@
             return null;
         }
     }});
+
+## 加载更多
+
+    mRvItem.addOnScrollListener(new RecyclerView.OnScrollListener() {
+	     @Override
+	     public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+	         super.onScrollStateChanged(recyclerView, newState);
+	         // 获取最后一个完全显示的itemPosition
+	         LinearLayoutManager manager          = (LinearLayoutManager) recyclerView.getLayoutManager();
+	         int                 lastItemPosition = manager.findLastCompletelyVisibleItemPosition();
+	         int                 itemCount        = manager.getItemCount();
+	         if (lastItemPosition == itemCount - 1 && 
+				newState == RecyclerView.SCROLL_STATE_IDLE      //当列表滚动停止时
+	            && !mRvItem.canScrollHorizontally(1)) {     	// 可以向下滚动
+			//  loadMore = true;
+			//  loadMoreData();
+		        }
+		    }
+		
+		    @Override
+		    public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+		        super.onScrolled(recyclerView, dx, dy);
+		    }
+		});
