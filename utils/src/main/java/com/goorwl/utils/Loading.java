@@ -4,15 +4,15 @@ import android.content.Context;
 
 import androidx.appcompat.app.AlertDialog;
 
-public class LoadingUtils {
+public class Loading {
     private static AlertDialog sSingleTest;
 
-    private LoadingUtils() {
+    private Loading() {
     }
 
     public static AlertDialog getInstance(Context context) {
         if (sSingleTest == null) {
-            synchronized (LoadingUtils.class) {
+            synchronized (Loading.class) {
                 if (sSingleTest == null) {
                     sSingleTest = new AlertDialog.Builder(context)
                             .setView(R.layout.layout_loading).create();

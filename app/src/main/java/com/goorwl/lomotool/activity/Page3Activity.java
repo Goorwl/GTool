@@ -1,5 +1,6 @@
 package com.goorwl.lomotool.activity;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -8,6 +9,7 @@ import com.goorwl.lomotool.bean.TestBean;
 import com.goorwl.lomotool.config.ConfigString;
 import com.goorwl.utils.AppManager;
 import com.goorwl.utils.CoreActivity;
+import com.goorwl.utils.Loading;
 import com.goorwl.utils.LogUtils;
 
 public class Page3Activity extends CoreActivity implements ConfigString {
@@ -20,6 +22,9 @@ public class Page3Activity extends CoreActivity implements ConfigString {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page3);
         mActivity = this;
+
+        // 透明背景
+        Loading.getInstance(mActivity).getWindow().setBackgroundDrawable(new ColorDrawable(0));
 
         Bundle   key  = getIntent().getExtras();
         TestBean kakk = (TestBean) key.getSerializable("person");
@@ -49,6 +54,7 @@ public class Page3Activity extends CoreActivity implements ConfigString {
         btn7.setOnClickListener(v -> {
             CoreActivity topActivity = AppManager.getAppManager().getPreActivity(mActivity);
             LogUtils.e(TAG, "onCreate: " + topActivity.getLocalClassName());
+            Loading.show(mActivity);
         });
     }
 

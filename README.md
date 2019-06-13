@@ -1,8 +1,6 @@
 # GTool 
 
-[![](https://jitpack.io/v/Goorwl/GTool.svg)](https://jitpack.io/#Goorwl/GTool)
-[![HitCount](http://hits.dwyl.io/goorwl/GTool.svg)](http://hits.dwyl.io/goorwl/GTool)
-[![](https://img.shields.io/badge/blog-%E6%A9%99%E5%AD%90-blue.svg)](https://xiaozhuanlan.com/goorwl?rel=goorwl) [![Build Status](https://travis-ci.org/Goorwl/GTool.svg?branch=master)](https://travis-ci.org/Goorwl/GTool) [![](https://img.shields.io/badge/Telegram-GOORWL-yellowgreen.svg)](https://t.me/goorwl)
+[![](https://jitpack.io/v/Goorwl/GTool.svg)](https://jitpack.io/#Goorwl/GTool) [![HitCount](http://hits.dwyl.io/goorwl/GTool.svg)](http://hits.dwyl.io/goorwl/GTool) [![Build Status](https://travis-ci.org/Goorwl/GTool.svg?branch=master)](https://travis-ci.org/Goorwl/GTool) [![](https://img.shields.io/badge/API-19%2B-blue.svg)](https://img.shields.io/badge/API-19%2B-blue.svg) [![](https://img.shields.io/badge/Telegram-GOORWL-yellowgreen.svg)](https://t.me/goorwl) [![](https://img.shields.io/badge/blog-%E6%A9%99%E5%AD%90-blue.svg)](https://xiaozhuanlan.com/goorwl?rel=goorwl) [![](https://img.shields.io/badge/E--mail-goorwl%40163.com-pink.svg)](https://mailto:goorwl@163.com)
 
 ## Introduction	
    
@@ -32,6 +30,10 @@ Step 2:In module `build.gradle` file, add following content:
 
 This tool is used to output some infomation during debug.
 
+* Added version 
+	
+		0.1.0
+
 * Init
 	
 		LogUtils.setEnable(BuildConfig.DEBUG);		// when we release the apk this log will auto close. Called before the first execution.
@@ -53,9 +55,13 @@ This tool is used to output some infomation during debug.
 
 This tool encapsulates thread operations by thread pool.
 
+* Added version 
+	
+		0.1.0
+
 * Init
 
-	NONE
+		NONE
 
 * Usage
 
@@ -74,6 +80,10 @@ This tool encapsulates thread operations by thread pool.
 ### SPUtils
 
 This tool encapsulates shareperference operations.
+
+* Added version 
+	
+		0.1.0
 
 * Init
 
@@ -97,9 +107,13 @@ This tool encapsulates shareperference operations.
 
 This tool is used to count down globally.
 
+* Added version 
+	
+		0.1.0
+
 * Init
 
-	NONE
+		NONE
 
 * Usage
 
@@ -118,9 +132,13 @@ This tool is used to count down globally.
 
 ### AppManager
 
+* Added version 
+	
+		0.1.0
+
 * Init
 
-	NONE
+		NONE
 
 * Usage
 
@@ -152,9 +170,13 @@ This tool is used to count down globally.
 
 This tool is a base Activity which can be used instead of AppCompatActivity, and add some method to more effectiveness.
 
+* Added version 
+	
+		0.1.0
+
 * Init
 
-	NONE
+		NONE
 
 * Usage
 
@@ -180,9 +202,13 @@ This tool is a base Activity which can be used instead of AppCompatActivity, and
 
 ### ImageUtils
 
+* Added version 
+	
+		0.1.0
+
 * Init 
 
-	NONE
+		NONE
 
 * Usage 
 
@@ -205,6 +231,31 @@ This tool is a base Activity which can be used instead of AppCompatActivity, and
 	* saveBitmap(ImageView, String) : Save image to local storage from ImageView.
 		
 		    ImageUtils.saveBitmap(imageView, "/sdcard/xxx.png);
+
+### Loading
+
+* Added version 
+	
+		1.0.0
+
+* Init
+
+		NONE
+
+* Usage
+
+	* getInstance(Context) : get an instance of AlertDialog with circle loading
+		
+    		AlertDialog instance = Loading.getInstance(mActivity);
+
+	* show(Context) : show the dialog with activity
+
+			Loading.show(mActivity);
+
+	* dismiss() : dismiss the dialog and destory the alertdialog
+
+			Loading.dismiss();
+
 
 ### LiveEventBus
 
