@@ -16,7 +16,7 @@ public class Page3Activity extends CoreActivity implements ConfigString {
     private CoreActivity mActivity;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page3);
         mActivity = this;

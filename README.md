@@ -218,9 +218,11 @@ Refer : [JeremyLiao](https://github.com/JeremyLiao/LiveEventBus)
 
 In project `proguard-rules.pro` file , add following content：
 
+	-dontwarn com.goorwl.utils.**
 	-keep class com.goorwl.utils.** { *; }
 	-keepclassmembers class com.goorwl.utils.** { *; }
-	-dontwarn com.goorwl.utils.**
+	-keep class androidx.lifecycle.** { *; }
+	-keep class androidx.arch.core.** { *; }
 
 ## About Author
 

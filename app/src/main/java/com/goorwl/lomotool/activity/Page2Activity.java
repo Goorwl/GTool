@@ -2,7 +2,7 @@ package com.goorwl.lomotool.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.widget.Button;
 
 import com.goorwl.lomotool.R;
@@ -19,7 +19,7 @@ public class Page2Activity extends CoreActivity implements ConfigString {
     private Button   mButton;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page2);
         mActivity = this;

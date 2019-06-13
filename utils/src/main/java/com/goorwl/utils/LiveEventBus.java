@@ -1,15 +1,16 @@
 package com.goorwl.utils;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LifecycleRegistry;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LifecycleRegistry;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -61,15 +62,15 @@ public class LiveEventBus {
 
         void postValueDelay(T value, long delay, TimeUnit unit);
 
-        void observe(@NonNull LifecycleOwner owner, @NonNull Observer<T> observer);
+        void observe1(@NonNull LifecycleOwner owner, @NonNull Observer<T> observer);
 
         void observeSticky(@NonNull LifecycleOwner owner, @NonNull Observer<T> observer);
 
-        void observeForever(@NonNull Observer<T> observer);
+        void observeForever1(@NonNull Observer<T> observer);
 
         void observeStickyForever(@NonNull Observer<T> observer);
 
-        void removeObserver(@NonNull Observer<T> observer);
+        void removeObserver1(@NonNull Observer<T> observer);
     }
 
     private static class BusMutableLiveData<T> extends MutableLiveData<T> implements Observable<T> {
@@ -113,7 +114,7 @@ public class LiveEventBus {
         }
 
         @Override
-        public void observe(@NonNull LifecycleOwner owner, @NonNull Observer<T> observer) {
+        public void observe1(@NonNull LifecycleOwner owner, @NonNull Observer<T> observer) {
             SafeCastObserver<T> safeCastObserver = new SafeCastObserver<>(observer);
             //保存LifecycleOwner的当前状态
             Lifecycle       lifecycle       = owner.getLifecycle();
@@ -144,7 +145,7 @@ public class LiveEventBus {
         }
 
         @Override
-        public void observeForever(@NonNull Observer<T> observer) {
+        public void observeForever1(@NonNull Observer<T> observer) {
             if (!observerMap.containsKey(observer)) {
                 observerMap.put(observer, new ObserverWrapper(observer));
             }
@@ -156,7 +157,7 @@ public class LiveEventBus {
         }
 
         @Override
-        public void removeObserver(@NonNull Observer<T> observer) {
+        public void removeObserver1(@NonNull Observer<T> observer) {
             Observer realObserver = null;
             if (observerMap.containsKey(observer)) {
                 realObserver = observerMap.remove(observer);

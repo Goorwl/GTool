@@ -11,16 +11,16 @@ import com.goorwl.utils.ThreadUtils;
 public class SplashActivity extends CoreActivity implements ConfigString {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        LiveEventBus.get().with(CONFIG_SPLASH).observe(this, s -> {
+        LiveEventBus.get().with(CONFIG_SPLASH).observe1(this, s -> {
             jumpActivity(MainActivity.class);
             finish();
         });
 
-        ThreadUtils.runOnUiThread(()->{
+        ThreadUtils.runOnUiThread(() -> {
             LiveEventBus.get().with(CONFIG_SPLASH).postValueDelay("xxx", 2000);
         });
     }

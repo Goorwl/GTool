@@ -1,18 +1,14 @@
 package com.goorwl.lomotool.activity;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.goorwl.lomotool.BuildConfig;
 import com.goorwl.lomotool.R;
 import com.goorwl.lomotool.config.ConfigString;
 import com.goorwl.utils.AppManager;
 import com.goorwl.utils.CoreActivity;
-import com.goorwl.utils.ImageUtils;
 import com.goorwl.utils.LogUtils;
 import com.goorwl.utils.SPUtils;
 import com.goorwl.utils.SingleTimer;
@@ -26,13 +22,12 @@ public class MainActivity extends CoreActivity implements ConfigString {
     private Button mButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mActivity = this;
         setTag(CONFIG_HOME);
         String tag = getTag();
-
 
         mButton = findViewById(R.id.button);
         mButton.setOnClickListener(v -> jumpActivity(Page2Activity.class));
@@ -64,14 +59,14 @@ public class MainActivity extends CoreActivity implements ConfigString {
 
         CoreActivity topActivity = AppManager.getAppManager().getTopActivity();
         CoreActivity preActivity = AppManager.getAppManager().getPreActivity(this);
-//
-//        AppManager.getAppManager().backToTagFront("xxx");
-//        AppManager.getAppManager().backToTag("xxx");
-//        AppManager.getAppManager().backToHome();
+        //
+        //        AppManager.getAppManager().backToTagFront("xxx");
+        //        AppManager.getAppManager().backToTag("xxx");
+        //        AppManager.getAppManager().backToHome();
 
-//        Bitmap xxx = ImageUtils.stringToBitmap("xxx");
-//        String res   = ImageUtils.bitmapToString(xxx);
-//        Drawable drawable = ImageUtils.bitmapToDrawable(mActivity, xxx);
-//        Bitmap bitmap = ImageUtils.drawableToBitmap(drawable);
+        //        Bitmap xxx = ImageUtils.stringToBitmap("xxx");
+        //        String res   = ImageUtils.bitmapToString(xxx);
+        //        Drawable drawable = ImageUtils.bitmapToDrawable(mActivity, xxx);
+        //        Bitmap bitmap = ImageUtils.drawableToBitmap(drawable);
     }
 }
