@@ -227,3 +227,17 @@
 		        super.onScrolled(recyclerView, dx, dy);
 		    }
 		});
+
+## RecycleView 嵌套 滑动布局NestedScrollView 
+
+    // mRecycleView.setNestedScrollingEnabled(true);	// 启动此视图的嵌套滑动
+
+	// 加载更多
+	mNestedScrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+            if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
+                mRefreshLayout.setRefreshing(true);
+                loadMore();
+            }
+        });
+
+
