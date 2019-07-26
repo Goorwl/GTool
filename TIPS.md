@@ -238,4 +238,29 @@
             }
         });
 
+## GSON 混淆
+
+	# Gson
+	-keep class com.google.gson.stream.** { *; }
+	-keepattributes EnclosingMethod
+	#这是你定义的实体类
+	-keep class com.xxx.xxx.bean.**{*;}
+
+## 混淆错误分析
+
+混淆分析 `mapping.txt` 文件位置：
+
+	%work_space%\app\build\outputs\mapping\release\mapping.txt
+
+本地解析工具位置：
+
+	%sdk_space%\tools\proguard\bin\retrace.bat
+
+操作方式：
+
+复制异常信息到`stacktrace.txt`文件中，执行以下命令：
+
+	.\retrace.bat -verbose mapping.txt stacktrace.txt > out.txt
+
+注意没有前缀路径表示在当前文件夹下进行分析。输出`out.txt`即为源码错误信息。
 

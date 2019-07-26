@@ -265,6 +265,14 @@ Refer : [JeremyLiao](https://github.com/JeremyLiao/LiveEventBus)
 
 [TIPS](./TIPS.md)
 
+## Other View
+
+### LoadingView 
+
+![Loading](https://i.imgur.com/oLEHicT.gif)
+
+[LoadingView](./VIEW/LoadingView.java)
+
 ## ProGuard
 
 In project `proguard-rules.pro` file , add following content：
