@@ -261,6 +261,10 @@ This tool is a base Activity which can be used instead of AppCompatActivity, and
 
 Refer : [JeremyLiao](https://github.com/JeremyLiao/LiveEventBus)
 
+## ViewPager2 Use
+
+[ViewPager2](./ViewPager2.md)
+
 ## Other Tips 
 
 [TIPS](./TIPS.md)

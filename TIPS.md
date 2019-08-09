@@ -264,3 +264,40 @@
 
 注意没有前缀路径表示在当前文件夹下进行分析。输出`out.txt`即为源码错误信息。
 
+## 自动生成指定包名
+
+项目根目录新建`config.gradle`，填充如下内容：
+
+	ext.versionNumberConfig = 1
+	ext.versionNameConfig = versionNumberConfig + versionTag()
+	
+	def versionTag() {
+	    def time = new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+	    def decoratedTime
+	    if (time.startsWith("20")) {
+	        decoratedTime = time.replaceFirst("20", "")
+	    } else {
+	        decoratedTime = time
+	    }
+	    return ".0." + decoratedTime
+	}
+
+项目根目录的`build.gradle`文件首行添加：
+
+	apply from: "config.gradle"
+
+在module的`build.gradle`文件内使用：
+
+	android {
+	    compileSdkVersion 28
+	    defaultConfig {
+	        applicationId "com.xxx.xxx"
+	        minSdkVersion 19
+	        targetSdkVersion 28
+	        versionCode versionNumberConfig
+	        versionName versionNameConfig
+	        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+	        setProperty("archivesBaseName", "XXXX-$versionName")
+	    }
+		...
+	}
