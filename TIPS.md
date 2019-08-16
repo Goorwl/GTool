@@ -1,4 +1,19 @@
-# 代码片段
+[像素转换](#像素转换)
+[版本信息](#版本信息)
+[隐藏（透明）状态栏](#隐藏（透明）状态栏)
+[双击返回](#双击返回)
+[防止多次点击](#防止多次点击)
+[强制更新对话框不消失](#强制更新对话框不消失)
+[键盘隐藏](#键盘隐藏)
+[.gitnore规则](#gitnore规则)
+[Glide加载布局背景方式](#Glide加载布局背景方式)
+[输入框限制输入两位小数](#输入框限制输入两位小数)
+[RV加载更多](#RV加载更多)
+[RV嵌套滑动布局NS](#RV嵌套滑动布局NS)
+[GSON混淆](#GSON混淆)
+[混淆错误分析](#混淆错误分析)
+[自动生成指定包名](#自动生成指定包名)
+[长按保存网页图片](#长按保存网页图片)
 
 ## 像素转换
 
@@ -135,7 +150,7 @@
 	 //切换软键盘的显示与隐藏  
 	imm.toggleSoftInputFromWindow(tv.getWindowToken(), 0, InputMethodManager.HIDE_NOT_ALWAYS);
 	
-## .gitnore规则
+## gitnore规则
 	
 	#built application files
 	*.apk
@@ -174,7 +189,7 @@
 	obj/
 	.externalNativeBuild
 
-## Glide 加载布局背景方式
+## Glide加载布局背景方式
 
 	SimpleTarget<Drawable> simpleTarget = new SimpleTarget<Drawable>() {
 	    @Override
@@ -204,7 +219,7 @@
         }
     }});
 
-## 加载更多
+## RV加载更多
 
 	mRvItem.addOnScrollListener(new RecyclerView.OnScrollListener() {
 	    @Override
@@ -226,7 +241,7 @@
 	    }
 	});
 
-## RecycleView 嵌套 滑动布局NestedScrollView 
+## RV嵌套滑动布局NS
 
     // mRecycleView.setNestedScrollingEnabled(true);	// 启动此视图的嵌套滑动
 
@@ -238,7 +253,7 @@
             }
         });
 
-## GSON 混淆
+## GSON混淆
 
 	# Gson
 	-keep class com.google.gson.stream.** { *; }
@@ -301,3 +316,142 @@
 	    }
 		...
 	}
+
+## 长按保存网页图片
+
+	mWebView.setOnLongClickListener(new View.OnLongClickListener() {
+		@Override
+		public boolean onLongClick(View view) {
+		    final WebView.HitTestResult hitTestResult = mWebView.getHitTestResult();
+		    LogUtils.e(TAG, "onLongClick xxx: " + hitTestResult.getExtra());
+		    // 如果是图片类型或者是带有图片链接的类型
+		    if (hitTestResult.getType() == WebView.HitTestResult.IMAGE_TYPE ||
+		            hitTestResult.getType() == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE) {
+		        // 弹出保存图片的对话框
+		        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+		        builder.setTitle("提示");
+		        builder.setMessage("保存图片到本地");
+		        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+		            @Override
+		            public void onClick(DialogInterface dialogInterface, int i) {
+		                //获取图片链接
+		                mPicUrl = hitTestResult.getExtra();
+		                if (PermissionUtils.checkPermission(mContext, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE})) {
+		                    //保存图片到相册
+		                    new Thread(new Runnable() {
+		                        @Override
+		                        public void run() {
+		                            LogUtils.e(TAG, "run mPicUrl : " + mPicUrl);
+		                            if (URLUtil.isValidUrl(mPicUrl)) {
+		                                url2bitmap(mPicUrl);
+		                            } else
+		                                savePicture(mPicUrl);
+		                        }
+		                    }).start();
+		                } else {
+		                    PermissionUtils.requestPermission(mContext, "请赋予权限", 1202, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE});
+		                }
+		            }
+		        });
+		        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+		            // 自动dismiss
+		            @Override
+		            public void onClick(DialogInterface dialogInterface, int i) {
+		            }
+		        });
+		        AlertDialog dialog = builder.create();
+		        dialog.show();
+		        return true;
+		    }
+		    return false;//保持长按可以复制文字
+		}
+	});
+
+    public void url2bitmap(String url) {
+        Bitmap bm = null;
+        try {
+            URL               iconUrl = new URL(url);
+            URLConnection     conn    = iconUrl.openConnection();
+            HttpURLConnection http    = (HttpURLConnection) conn;
+            int               length  = http.getContentLength();
+            conn.connect();
+            // 获得图像的字符流
+            InputStream         is  = conn.getInputStream();
+            BufferedInputStream bis = new BufferedInputStream(is, length);
+            bm = BitmapFactory.decodeStream(bis);
+            bis.close();
+            is.close();
+            if (bm != null) {
+                save2Album(bm);
+            }
+        } catch (Exception e) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(mContext, "保存失败", Toast.LENGTH_SHORT).show();
+                }
+            });
+            e.printStackTrace();
+        }
+    }
+
+    private void save2Album(Bitmap bitmap) {
+        File appDir = new File(Environment.getExternalStorageDirectory(), new SimpleDateFormat("SXS_yyyyMMddHHmmss", Locale.getDefault()).format(new Date()) + ".jpg");
+        if (!appDir.exists()) appDir.mkdir();
+        String[] str      = mPicUrl.split("/");
+        String   fileName = str[str.length - 1];
+        File     file     = new File(appDir, fileName);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+            onSaveSuccess(file);
+        } catch (IOException e) {
+            runOnUiThread(() -> Toast.makeText(mContext, "保存失败", Toast.LENGTH_SHORT).show());
+            e.printStackTrace();
+        }
+    }
+
+    private boolean savePicture(String base64DataStr) {
+        // 1.去掉base64中的前缀
+        String base64Str = base64DataStr.substring(base64DataStr.indexOf(",") + 1);
+        // 获取手机相册的路径地址
+        String galleryPath = Environment.getExternalStorageDirectory()
+                + File.separator + Environment.DIRECTORY_DCIM
+                + File.separator + "Camera" + File.separator;
+        //创建文件来保存，第二个参数是文件名称，可以根据自己来命名
+        File   file     = new File(galleryPath, System.currentTimeMillis() + ".png");
+        String fileName = file.toString();
+        // 3. 解析保存图片
+        byte[] data = Base64.decode(base64Str, Base64.DEFAULT);
+
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] < 0) {
+                data[i] += 256;
+            }
+        }
+        OutputStream os = null;
+        try {
+            os = new FileOutputStream(fileName);
+            os.write(data);
+            os.flush();
+            os.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            //通知相册更新
+            Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            Uri    uri    = Uri.fromFile(file);
+            intent.setData(uri);
+            mContext.sendBroadcast(intent);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(mContext, "保存成功", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
