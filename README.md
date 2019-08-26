@@ -170,7 +170,7 @@ This tool is used to count down globally.
 
 * Added version 
 	
-		0.1.1
+		1.0.1
 
 * Init
 
