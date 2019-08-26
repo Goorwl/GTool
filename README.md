@@ -166,6 +166,39 @@ This tool is used to count down globally.
 
 	MUST USE WITH COREACTIVITY.
 
+### RvAdapterWrapper
+
+* Added version 
+	
+		0.1.1
+
+* Init
+
+		NONE
+
+* Usage
+
+	* addHeaderView(View view) : set the recyclerview head view
+
+	        TextView textView = new TextView(context);
+	        textView.setText("this is a head view");
+	        adapterWrapper.addHeaderView(textView);
+
+	* addFootView(View view) : set the recyclerview foot view
+	
+	        TextView textView = new TextView(context);
+	        textView.setText("this is a foot view");
+	        adapterWrapper.addFootView(textView);
+
+	* setNormal(boolean isNormal) : set the view which you add if like normal view
+
+			adapterWrapper.setNormal(true);
+
+* NOTICE
+
+	use this class wrap your own adataper
+
+
 ### CoreActivity
 
 This tool is a base Activity which can be used instead of AppCompatActivity, and add some method to more effectiveness.
