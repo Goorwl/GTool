@@ -30,6 +30,10 @@
 
 [长按保存网页图片](#长按保存网页图片)
 
+[嵌套滑动冲突](#嵌套滑动冲突)
+
+[全屏dialog的实现](#全屏dialog的实现)
+
 ## 像素转换
 
     public static int dpToPx(Context ctx, int dp) {
@@ -470,3 +474,33 @@
             });
         }
     }
+
+
+## 嵌套滑动冲突
+
+重写内部带滑动的控件，添加如下代码：
+
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev){
+			getParent().requestDisallowInterceptTouchEvent(true);		// 通知父类现在进行的是本控件的操作
+			return super.onInterceptTouchEvent(ev);
+		}
+	}
+
+重写之后，在xml使用既可。
+
+
+## 全屏dialog的实现
+
+创建style：
+
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:windowBackground">@color/transparent</item>
+    <item name="android:windowNoTitle">true</item>
+
+原理分析：[三句代码创建全屏Dialog：带你从源码角度实现](https://juejin.im/post/58de0a9a44d904006d04cead)
+
+setview 和 setContentView 的区别：
+
+view 是全部布局
+contentview 是 title 下面按钮上面的布局取域。
